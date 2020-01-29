@@ -99,6 +99,7 @@ CMD를 실행해서 아래의 명령어를 입력하여 local로 clone을 하고
 
 {% highlight base16.monokai.dark %}
 >jekyll new .
+>gem install bundler
 >bundle install
 {% endhighlight %}
 
@@ -108,6 +109,25 @@ CMD를 실행해서 아래의 명령어를 입력하여 local로 clone을 하고
 >bundle exec jekyll serve  #jekyll serve 해도 되지만 앞과 같이 하는 것이 오류를 방지하기에 좋다
 {% endhighlight %}
 
+아래와 같은 화면이 나온다면 성공!
+
+![]({{site.baseurl}}/img/jekyll_default_theme.jpg)
+
+***
+
+### GitHub에 올리기
+
+Jekyll serve로 열어서 기본 테마가 적용된 사이트를 확인했다면 이제 Github에 올려야 한다.
+
+올리는 방법은 아래와 같이 명령어를 차례대로 입력하면 된다.
+
+{% highlight base16.monokai.dark %}
+>git add .
+>git commit -m "your commit"
+>git push
+{% endhighlight %}
+
+이때도 마찬가지로 실제 적용될 때까지 시간이 걸리기 때문에 몇 분정도 기다린 후 자신의 블로그([username].github.io)에 들어가면 된다.
 
 이 아래부터는 테마를 적용할 때 가능한 여러 방법들을 나열해놓았다. 각자가 편한 방법으로 골라서 하면 될 것 같다.
 

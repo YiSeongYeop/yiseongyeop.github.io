@@ -9,10 +9,13 @@ permalink: /about/
 
 This blog is used to review what I have learned at KAIST and to organize for my own satisfaction. If anything is missing, please let me know by leaving comments.
 
+
+
 #### 카이스트 전산학부 <KAIST Computer Science Department>
 <small>2019 - 현재</small>
 
 content
+
 
 #### 부산과학고등학교 <Busan Science High School>
 <small>2016 - 2017</small>

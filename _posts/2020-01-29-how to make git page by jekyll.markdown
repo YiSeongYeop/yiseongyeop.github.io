@@ -2,7 +2,7 @@
 layout: post
 title:  How to make Git Page by Jekyll(for Windows)
 date:   2020-01-29 15:20:30 +0300
-image:  05.jpg
+image:  jekyll_logo.png
 tags:   Guide
 ---
 이번에 git page를 만들어 보면서 정말 수십개의 홈페이지, 블로그 등을 찾아보았다. 

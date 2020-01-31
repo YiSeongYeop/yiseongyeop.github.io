@@ -44,7 +44,7 @@ tags:   Guide
 
 Github는 두 가지 page가 있는데, 하나는 위의 사진처럼 그냥 클라우드와 같이 파일 공유를 위한 page이고, 나머지 하나는 Github 내장 Jekyll을 통해 보여지는 page이다.
 
-후자의 경우는 주소창에 [username].github.io를 치면 나올 것이다.
+후자의 경우가 바로 여러분의 블로그 페이지가 될 곳이다. 주소창에 [username].github.io를 치면 나올 것이다.
 
 (바로 적용되지 않으므로 안 보인다고 당황할 것 없이 몇 분 기다리면 된다!)
 
@@ -87,7 +87,9 @@ Ruby 설치 확인이 끝났다면 윈도우 검색창에 ruby 라고 검색해�
 
 ![]({{site.baseurl}}/img/gb4.JPG)
 
-CMD를 실행해서 아래의 명령어를 입력하여 local로 clone을 하고 나서 생성된 폴더로 이동한다.
+CMD를 실행해서 아래의 명령어를 입력하여 컴퓨터로 clone을 하고 나서 생성된 폴더로 이동한다.
+
+폴더 이름은 Repository name으로 자동 생성된다.
 
 {% highlight base16.monokai.dark %}
 >git clone https://github.com/YiSeongYeop/yiseongyeop.github.io.git
@@ -103,10 +105,30 @@ CMD를 실행해서 아래의 명령어를 입력하여 local로 clone을 하고
 >bundle install
 {% endhighlight %}
 
-어떻게 생성되었는지 보고 싶다면 아래의 명령어를 입력하여 서버를 열고, 아래에 표기된 Server address를 통해 접속하여 사이트를 확인해본다.
+#### Error 1
+
+{% highlight markdown %}
+Conflict: C:/Users/.../yiseongyeop.github.io exists and is not empty.
+Ensure C:/Users/.../yiseongyeop.github.io is empty or else try again with '--force' to proceed and overwrite any files.
+{% endhighlight %}
+
+이 에러는 Jekyll new .을 하는 폴더 내에 다른 내용물이 들어있을 때, 즉 비어있지 않을 때 생긴다. (.git 폴더는 상관 없다!)
+Jekyll new . 를 해서 생성되는 파일 또는 폴더의 이름 목록은 아래와 같다.
+
+* _posts
+* vendor
+* .gitignore
+* _config.yml
+* 404.html
+* about.markdown
+* Gemfile
+* Gemfile.lock
+* index.markdown
+
+에러를 모두 해결해서 제대로 실행이 되었고, 블로그가 어떻게 생성되었는지 보고 싶다면 아래의 명령어를 입력하여 서버를 열고, 아래에 표기된 Server address를 통해 접속하여 사이트를 확인해본다.
 
 {% highlight base16.monokai.dark %}
->bundle exec jekyll serve  #jekyll serve 해도 되지만 앞과 같이 하는 것이 오류를 방지하기에 좋다
+>bundle exec jekyll serve  #jekyll serve 해도 되지만 앞의 명령어로 하면 무시해야 할 것들을 무시하기 때문에 오류를 방지하기에 좋다
 {% endhighlight %}
 
 아래와 같은 화면이 나온다면 성공!

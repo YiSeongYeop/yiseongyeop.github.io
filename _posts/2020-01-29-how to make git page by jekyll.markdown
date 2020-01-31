@@ -151,8 +151,49 @@ Jekyll serve로 열어서 기본 테마가 적용된 사이트를 확인했다�
 
 이때도 마찬가지로 실제 적용될 때까지 시간이 걸리기 때문에 몇 분정도 기다린 후 자신의 블로그([username].github.io)에 들어가면 된다.
 
-이 아래부터는 테마를 적용할 때 가능한 여러 방법들을 나열해놓았다. 각자가 편한 방법으로 골라서 하면 될 것 같다.
+이 아래부터는 테마를 적용할 때 가능한 방법들을 나열해놓았다. 
 
 ***
 
-### 1. 
+### 테마 적용하기
+
+#### GitHub Pages의 기본 테마 이용하기
+Github pages에서는 몇 가지 기본 테마를 지원하는데, 이것을 Jekyll을 이용하여 적용할 수 있다.
+아래 하이퍼링크에는 Github pages가 지원하는 테마의 목록이 있고, 클릭해 들어가서 zip 파일 또한 다운받을 수 있다. 
+[Github Pages supported Themes][Github-Pages-supported-Themes]
+
+[Github-Pages-supported-Themes]: https://pages.github.com/themes/
+
+아래 하이퍼링크는 그에 대해 Github에서 설명한 사이트이다.
+[Adding a theme to your GitHub Pages site using Jekyll][Adding-a-theme-to-your-GitHub-Pages-site-using-Jekyll]
+
+[Adding-a-theme-to-your-GitHub-Pages-site-using-Jekyll]: https://help.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll
+
+역시 한국인은 영어보단 한국어가 편하니까 나도 정리해둘 겸 한국어로 설명해보도록 하겠다.
+
+Github에서 자기 블로그 Repository로 이동한다.
+
+소스파일 중에서 -config.yml을 클릭해서 들어온다. 아래 사진처럼 뜰 것이다.
+![]({{site.baseurl}}/img/config.JPG)
+
+위의 사진에서 표시된 부분을 클릭하여 editor를 연다.
+
+Github에서 지원되는 테마를 이용하기 위해서 theme: THEME-NAME 줄에서 THEME-NAME을 지원되는 테마의 이름으로 바꾼다.
+
+![]({{site.baseurl}}/img/config3.JPG)
+
+Github에서 호스팅되는 다른 Jekyll 테마를 사용하려면, 기존에 있던 theme: THEME-NAME을 remote_theme: THEME-NAME으로 수정하고, THEME-NAME을 하고자 하는 테마가 있는 Github의 README에 적혀있는 이름으로 수정한다.
+
+-config.yml을 저장하기 전에, 아래에서 commit를 작성하자
+
+![]({{site.baseurl}}/img/config2.JPG)
+
+commit message 아래에서 이 commit을 현재 branch에 추가할지, 새로운 branch에 추가할지 결정한다. 하지만 정말 특별한 경우가 아니라면 Commit directly to the master branch를 선택해서 현재 commit을 현재 branch에 추가한다.
+
+현재 branch가 master인 경후 commit을 위해 새 branch를 생성한 다음 pull request를 생성해야한다. pull request를 생성하는 방법은 이후에 추가하도록 하겠다.
+
+아래에 위치한 Propose file change 라고 적힌 초록색 버튼을 클릭한다.
+
+테마 적용이 완료되었다.
+
+#### Jekyll의 테마 이용하기

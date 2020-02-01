@@ -157,7 +157,7 @@ Jekyll serve로 열어서 기본 테마가 적용된 사이트를 확인했다�
 
 ### 테마 적용하기
 
-#### GitHub Pages의 기본 테마 이용하기
+#### 1. GitHub Pages의 기본 테마 이용하기
 Github pages에서는 몇 가지 기본 테마를 지원하는데, 이것을 Jekyll을 이용하여 적용할 수 있다.
 아래 하이퍼링크에는 Github pages가 지원하는 테마의 목록이 있고, 클릭해 들어가서 zip 파일 또한 다운받을 수 있다. 
 [Github Pages supported Themes][Github-Pages-supported-Themes]
@@ -196,4 +196,4 @@ commit message 아래에서 이 commit을 현재 branch에 추가할지, 새로�
 
 테마 적용이 완료되었다.
 
-#### Jekyll의 테마 이용하기
+#### 2. Jekyll의 테마 이용하기

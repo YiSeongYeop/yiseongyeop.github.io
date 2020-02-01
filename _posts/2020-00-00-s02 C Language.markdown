@@ -5,3 +5,87 @@ date:   2020-01-29 12:50:30 +0300
 image:  05.jpg
 tags:   SysProg
 ---
+
+***
+### C Language
+C 언어는 1972년 Dennis Ritchie가 Bell Labs에 있을 때 개발되었습니다. 
+C 언어의 사용으로 유닉스는 이식 가능한 운영체제가 되었습니다.
+
+Unix OS를 발전 시키는데 사용되었고, 지금은 Linux Kernel을 개발하는데 사용이 되고 있습니다.
+
+커널이라 함은 OS의 핵심 부분으로써, 요약하자면 응용 프로그램의 실행에 필요한 서비스를 관리한다고 할 수 있습니다. 
+
+***
+
+### C is a Compiled Language
+C 언어는 컴파일 언어(compiled languages)로서, 컴파일러(GCC)가 C 프로그램을 기계가 읽을 수 있는 어셈블리(machine readable assembly 또는 기계어)로 컴파일합니다. 
+
+파이썬이나 자바스크립트 같은 언어들은 인터프리트 언어(interpreted languages)로서, 위의 컴파일 언어처럼 완전히 기계어로 변환하는 것이 아니라 실행 중에 한 줄씩 해석하며 실행합니다. 
+
+한줄 한줄 각각 실행을 해야 하다보니 C와 같은 컴파일 언어에 비해서 실행 속도가 느려지게 됩니다.
+
+각각에는 장점이 있는데, 컴파일 언어의 경우 실행 속도가 빠르고 최적화가 잘 됩니다. 
+
+인터프리트 언어의 경우 코드가 수정되었을 때 또 컴파일 할 필요 없이 바로 실행해 볼 수 있습니다.
+
+***
+
+### GCC (GNU Compiler Collection)
+GCC는 C언어의 컴파일러입니다.
+
+여기서 컴파일러란 컴퓨터 언어의 통역사와 같은 역할을 하는 것을 말합니다.
+
+이 컴파일러는 high-level language program(human readable)에서 low-level language program(machine readable)로 번역을 합니다.
+
+high-level language program은 우리가 보통 C나 자바, 파이썬을 통해 코딩해 놓은 것들을 말하고, low-level language program은 기계어를 말합니다.
+
+컴파일 프로세스는 아래와 같습니다.
+
+![]({{site.baseurl}}/img/language_processing_system.jpg)
+출처: <a href=https://www.tutorialspoint.com/compiler_design/compiler_design_overview.htm target="_blank">tutorialspoint</a>
+
+먼저, 작성한 소스 코드 .c 파일(nanayang.c)이 전처리기로 들어옵니다. 
+
+전처리기는 전처리 구문들(#include, #define 등등)을 처리하고 주석을 없앤 .i 파일(nanayang.i)을 만듭니다. 
+
+다음으로 컴파일러가 .i 파일을 .a(or .asm) 파일(nanayang.a)로 컴파일합니다. 
+
+이 과정을 거치면 사람도 이해할 수 있고 컴퓨터도 이해할 수 있는 어셈블리어로 된 파일이 완성됩니다. 
+
+다음으로 어셈블러가 이 파일을 기계어로 바꾸는 어셈블 과정을 거치면서 .o(or .obj) 파일(nanayang.o)가 생성됩니다. 
+
+마지막으로, 링커가 .o 파일을 라이브러리 함수가 저장된 라이브러리와 결합시키면서 최종 결과물인 .exe 파일(nanayang.exe)이 생성됩니다. 
+
+위의 사진에는 이 뒤에 두 단계가 더 있지만 뒤의 내용에서 따로 언급하도록 하겠습니다.
+
+***
+
+### Simple C program
+
+{% highlight base16.monokai.dark %}
+#include <stdio.h>       //Include header for I/O(printf)
+
+int add(int x, int y)    //Function
+{
+	return x+y;
+}
+
+int main(void)
+{
+	int a, b, sum;      //Types of variables
+	a=1, b=2;
+	// single line comment
+	/* multiple
+	*line
+	*comment*/
+	sum = add(a,b);    //Function call
+	printf("%d+%d = %d\n", a, b, sum);
+
+	return 0;
+}
+{% endhighlight %}
+
+***
+
+### C: Types
+C언어에는 변수의 타입이 여러가지 있습니다.

@@ -6,7 +6,6 @@ image:  05.jpg
 tags:   SysProg
 ---
 
-***
 ### C Language
 C 언어는 1972년 Dennis Ritchie가 Bell Labs에 있을 때 개발되었습니다. 
 C 언어의 사용으로 유닉스는 이식 가능한 운영체제가 되었습니다.
@@ -42,7 +41,9 @@ high-level language program은 우리가 보통 C나 자바, 파이썬을 통해
 컴파일 프로세스는 아래와 같습니다.
 
 ![]({{site.baseurl}}/img/language_processing_system.jpg)
-출처: <a href=https://www.tutorialspoint.com/compiler_design/compiler_design_overview.htm target="_blank">tutorialspoint</a>
+출처: [tutorialspoint][tutorialspoint]
+
+[tutorialspoint]: https://www.tutorialspoint.com/compiler_design/compiler_design_overview.htm
 
 먼저, 작성한 소스 코드 .c 파일(nanayang.c)이 전처리기로 들어옵니다. 
 
@@ -76,8 +77,8 @@ int main(void)
 	a=1, b=2;
 	// single line comment
 	/* multiple
-	*line
-	*comment*/
+	 *line
+	 *comment*/
 	sum = add(a,b);    //Function call
 	printf("%d+%d = %d\n", a, b, sum);
 
@@ -89,3 +90,551 @@ int main(void)
 
 ### C: Types
 C언어에는 변수의 타입이 여러가지 있습니다.
+
+![]({{site.baseurl}}/img/Data-Type-Limits-in-C-1.png)
+출처: [bccfalna][bccfalna]
+
+[bccfalna]: https://www.bccfalna.com/ebooks/wp-content/uploads/ebooks/2014/12/Data-Type-Limits-in-C-1.png
+
+파이썬의 경우 모든 변수 타입을 변수에 적용할 수 있지만 C는 타입을 따로 선언해야 합니다. 
+선언을 했다면, 그 변수에는 선언한 타입에 맞는 값만 지정해 주어야 합니다.
+int a; 라고 선언을 했다면, a = 1.5;가 아니라 a = 1;로 지정해 주어야 한다는 뜻입니다.
+
+{% highlight base16.monokai.dark %}
+...
+int main(void)
+{
+	int a, b, sum; //Declare that a,b,sum are integer types
+	a=1, b=2;      //Assign integers 1 and 2 to a and b
+	// single line comment
+	/* multiple
+	 *line
+	 *comment*/
+	sum = add(a,b);    //Function call
+	printf("%d+%d = %d\n", a, b, sum);
+
+	return 0;
+}
+{% endhighlight %}
+
+***
+
+### C: Typecasting
+
+타입캐스팅이란, 한 타입의 변수를 다른 타입의 변수로 수정하는 것을 말합니다.
+C에서의 타입캐스팅은 파이썬에서의 타입캐스팅과 비슷합니다
+
+Python: int_variable = int(4.0)
+C     : int int_variable = (int)4.0;
+
+***
+
+### C: Flow Control: If else statements
+
+C에는 여러 제어문이 있습니다.
+그 중 먼저 If else 제어문에 대해 알아보도록 하겠습니다.
+C에서의 If else 제어문은 파이썬에서의 If elif else 제어문과 비슷합니다.
+
+{% highlight base16.monokai.dark %}
+python
+
+if [condition]:
+	statement
+elif [condition]:
+	statement
+else:
+	statement
+{% endhighlight %}
+
+{% highlight base16.monokai.dark %}
+C
+
+if (condition)
+{
+	statement;
+}
+else if (condition)
+{
+	statement;
+}
+else
+{
+	statement;
+}
+{% endhighlight %}
+
+C에서는 if / else if / else문을 이용할 때 statement가 한 줄만 필요하다면 아래처럼 중괄호를 생략할 수 있습니다.
+
+{% highlight base16.monokai.dark %}
+if (condition)
+	statement;
+{% endhighlight %}
+
+***
+
+### C: Flow Control: While statement
+
+While 제어문 또한 파이썬과 비슷한 구성을 가집니다.
+
+{% highlight base16.monokai.dark %}
+python
+
+while [condition]:
+	statements to keep on looping
+{% endhighlight %}
+
+{% highlight base16.monokai.dark %}
+C
+
+while (condition)
+{
+	statements;
+}
+{% endhighlight %}
+
+C에서는 while문을 이용할 때 statement가 한 줄만 필요하다면 아래처럼 중괄호를 생략할 수 있습니다.
+
+{% highlight base16.monokai.dark %}
+while (condition)
+	statement;
+{% endhighlight %}
+
+***
+
+### C: Flow Control: Do while statement
+
+C에는 Do while이라는 제어문이 있습니다.
+구성은 아래와 같습니다.
+
+{% highlight base16.monokai.dark %}
+do
+{
+	statement;
+} while (condition);
+{% endhighlight %}
+
+Do while은 while제어문과 비슷하지만, condition이 false라 하더라도 먼저 do 안에 있는 statement를 항상 먼저 실행하고 condition을 체크합니다.
+즉, 처음부터 condition이 false라 하더라도 statement를 무조건 한 번 실행한다는 것입니다.
+
+while은 condition이 false이면 아래에 있는 statement를 아예 실행하지 않습니다.
+
+***
+
+### C: Flow Control: For loop
+
+For loop의 구성은 아래와 같습니다.
+
+{% highlight base16.monokai.dark %}
+for (i=0; i<10; i++)
+{
+	statement;
+}
+{% endhighlight %}
+
+loop는 i가 [0, 10)의 범위 안에 있으면 계속 실행될 것입니다.
+for 내부는 for(init, condition, increment) 이렇게 3가지로 구성되어 있습니다.
+
+Init은 loop에 들어가기 전 처음에 실행이 됩니다.
+Condition은 loop이 실행되기 직전에 체크됩니다.
+Increment는 loop의 실행이 끝나고 나서 실행됩니다.
+
+즉, 위의 코드를 해석해보자면
+Init: i=0부터 시작한다.
+Condition: while i is between 0 and 9
+Increment: loop가 한번 돌 때마다 i를 1씩 증가시킨다.
+
+for (;;)와 같이 각 3가지 요소들은 비워둘 수 있고, 각각은 아래와 같은 의미를 가지고 있습니다.
+
+Init이 empty: nothing to do
+Condition이 empty: implies true
+Increment가 empty: nothing to do
+
+***
+
+### C: Flow Control: Loop helpers
+
+loop를 빠져나오고 싶거나 다음 loop로 바로 넘어가고 싶을 때 사용할 수 있는 helpers가 있습니다.
+
+break: loop를 빠져나온다.
+* 특정 하위 조건을 만족했을 때 loop를 빠져나오게 하는데 유용하게 사용된다.
+* 하위 조건: looping 조건이 아닌, 조건 내에 있는 다른 조건
+
+{% highlight base16.monokai.dark %}
+for (;;)
+{
+	statement;
+	if (sub condition)
+		break;
+	ommitted statements;
+}
+
+{% endhighlight %}
+
+continue: 현재 loop에서 뒤에 남은 statements를 생략하고 다음 loop로 간다.
+* 예를 들어, for (i=1;i<10;i++) 이 있고, 현재 loop가 i=5인 상황에서 continue 하는 조건에 부합했다면, 현재 loop에서 남은 것들을 생략하고 바로 i=6인 루프로 넘어간다는 것이다.
+* loop안에 있는 if/else 구문과 비슷하다.
+
+{% highlight base16.monokai.dark %}
+for (;;)
+{
+	statement;
+	if (sub condition)
+		continue;
+	ommitted statements;
+}
+
+{% endhighlight %}
+
+{% highlight base16.monokai.dark %}
+for (;;)
+{
+	statement;
+	if (!sub condition)
+		ommitted statements;
+}
+
+{% endhighlight %}
+
+***
+
+### C: Functions
+
+코드를 각기 다른 그룹으로 나누는 역할입니다.
+구성은 return_type function_name (arguments,...)입니다.
+return_type이 non-void라면 마지막에 return_type에 맞는 값을 return 해주어야 합니다.
+
+{% highlight base16.monokai.dark %}
+int main()    //Function return type: int
+	...       //Function name: main
+	return 0; //Function arguments: none
+			  //return int type value 0
+{% endhighlight %}
+
+중요한 사실은, 어떤 함수를 이용하기 전에 그 함수를 선언, 정의해야 한다는 것입니다.
+아래와 같이 sum 함수를 위치 상 위인 main에서 사용을 하는데 정의를 그 아래에서 한다면 에러가 나게 됩니다.
+
+{% highlight base16.monokai.dark %}
+#include <stdio.h>
+
+int main(int argc, char* argv[])
+{
+	printf("add(5+7)=%d\n", add(5,7));
+	return 0;
+}
+
+int add(int a, int b)
+{
+	return a+b;
+}
+{% endhighlight %}
+
+위의 코드를 에러가 나지 않게 수정하는데는 2가지 방법이 있습니다.
+
+1. Define(정의) before calling
+{% highlight base16.monokai.dark %}
+#include <stdio.h>
+
+int add(int a, int b)
+{
+	return a+b;
+}
+
+int main(int argc, char* argv[])
+{
+	printf("add(5+7)=%d\n", add(5,7));
+	return 0;
+}
+{% endhighlight %}
+
+2. Declare(선언) before calling
+{% highlight base16.monokai.dark %}
+#include <stdio.h>
+
+int add(int a, int b)
+
+int main(int argc, char* argv[])
+{
+	printf("add(5+7)=%d\n", add(5,7));
+	return 0;
+}
+
+int add(int a, int b)
+{
+	return a+b;
+}
+{% endhighlight %}
+
+***
+
+### C: Pointers
+
+포인터는 variable의 또 한가지 타입으로, 다른 variable/structure/function의 메모리 주소를 저장합니다.
+
+{% highlight base16.monokai.dark %}
+int main(int argc, char* argv[])
+{
+	int a = 0;
+	int* a_ptr = &a;
+	printf("a(%p): %d\n", a_ptr, a);
+	(* a_ptr)++;
+	printf("a(%p): %d\n", a_ptr, a);
+	return 0;
+}
+{% endhighlight %}
+
+int* ptr의 의미: ptr은 integer를 points하는 pointer type이다.
+&a의 의미: a가 저장된 메모리 주소를 반환한다.
+* a_ptr은 이미 포인터 형식인 a_ptr을 재참조하여 a_ptr이 points하고 있는 곳에 저장된 값에 access한다는 의미이다.
+
+예를 들면,
+int b = 17;
+int* a = &b;
+라고 한다면, a에는 b가 저장된 메모리 주소값이 저장될 것이다.
+이후 * a += 2;를 하면 a에 저장된 메모리 주소에 있는 값에 +2를 한다는 의미이다.
+a에 저장된 메모리 주소는 b를 가리키고 있으므로 결국 b+2를 하는 것과 같은 의미가 된다.
+따라서 printf("B: %d\n", 19);가 된다.
+
+***
+
+### C: Structures
+
+위에서 structure에 대해 언급되었지만 설명을 하지 않아서 한번 짚고 넘어가려 한다.
+
+Sturcture란 복합 데이터 타입으로, 여러가지 변수가 하나의 structure variable로 묶인다.
+
+Structure의 정의는 아래와 같이 한다.
+{% highlight base16.monokai.dark %}
+struct rectangle
+{
+	float width;
+	float height;
+	....
+}
+{% endhighlight %}
+
+위에서 정의한 것을 사용하는 방법은 아래와 같다.
+{% highlight base16.monokai.dark %}
+struct rectangle rect; //struct rectangle인 변수 rect 선언
+rect.width = 5.0;
+rect.height = 2.0;
+{% endhighlight %}
+위와 같이 "."을 이용해서 struct rectangle members에 접근한다.
+
+Structures는 함수의 인수(arguments)로 전달 가능하다.
+{% highlight base16.monokai.dark %}
+float calculate_size(struct rectangle rect)
+{
+	return rect.width * rect.height;
+}
+{% endhighlight %}
+
+Pointers는 Structures에 point 가능하다.
+{% highlight base16.monokai.dark %}
+float calculate_size(struct rectangle* rect)
+{
+	return rect->width * rect->height;
+}
+{% endhighlight %}
+이때는 Structure pointers가 쓰였으므로 "." 대신에 "->" 를 사용한다.
+
+Structure를 allocation할 때 함정이 있다.
+아래 두 줄은 겉보기에는 비슷하지만 매우 다른 의미를 가지고 있다.
+{% highlight base16.monokai.dark %}
+struct rectangle rect;
+struct rectangle* rect2;
+{% endhighlight %}
+
+rect는 rectangle 이라는 structure 전체를 stack memory에 할당한다.
+rect2는 structure를 가리키는 pointer만 할당한다. 만약, Sturcture 전체 메모리 크기가 30B라면, rect2는 포인터 크기인 8B만큼만 할당할 것이다.(모든 주소들은 x86-64bit에서 8B이다)
+
+rect2에서는 동적으로 메모리 할당을 하지 않는다면 메모리 충돌이 발생할 수 있다.
+
+***
+
+### C: Structure & Pointer illustration
+
+{% highlight base16.monokai.dark %}
+struct rectangle
+{
+	double width;
+	double height;
+}
+struct rectangle rect;
+struct rectangle* rect2 = &rect;
+{% endhighlight %}
+
+![]({{site.baseurl}}/img/pointer_illustration_structure.JPG)
+
+절대 하지 말아야 할 일이 있다.
+{% highlight base16.monokai.dark %}
+struct rectangle* rect;
+rect->height = 4.0;
+rect->weight = 2.0;
+{% endhighlight %}
+위처럼 하면 메모리상에서 아무 랜덤한 위치에 값을 넣게 될 것이다.
+이러한 일을 피하기 위해서는 아래와 같이 malloc을 사용하면 된다.
+{% highlight base16.monokai.dark %}
+struct rectangle* rect;
+rect = (struct rectangle* )malloc(sizeof(struct rectangle));
+rect->height = 4.0;
+rect->weight = 2.0;
+{% endhighlight %}
+
+***
+
+### C: Memory allocation
+
+모든 변수는 컴파일러에 의해 'stack' 공간에 할당된다.
+'stack' 공간은 크기에 한계가 있고, 수명(lifetime) 또한 제한이 있다. 자세한 사항은 이후에 다루도록 하겠다.
+동적 메모리 할당은 요청된 크기의 메모리를 'heap' 공간에 할당한다.
+'heap'은 컴퓨터의 남은 메모리만큼의 크기를 가진다.
+
+{% highlight base16.monokai.dark %}
+$ man malloc
+$ man 3 free
+는 malloc/free 함수의 메뉴얼을 보여준다.
+{% endhighlight %}
+
+malloc / free / calloc / realloc 을 사용하기 위해서는 #include <stdlib.h>를 사용해야 한다.
+아래는 각 4가지 함수의 선언 및 prototype 이다.
+{% highlight base16.monokai.dark %}
+void* malloc(size_t size);
+void free(void* ptr);
+void* calloc(size_t nmemb, size_t size);
+void* realloc(void* ptr, size_t size);
+{% endhighlight %}
+
+malloc은 크기 값(할당 크기)을 받아서 포인터를 반환한다.
+이때 void* 타입은 타입캐스팅으로 원하는 타입으로 바꿀 수 있다.
+
+메모리 할당 예시
+{% highlight base16.monokai.dark %}
+struct rectangle* rect;
+rect = (struct rectangle* )malloc(sizeof(struct rectangle));
+
+int* arr;
+arr = (int* )malloc(sizeof(int) * 10);
+{% endhighlight %}
+
+sizeof(type)처럼 하나의 변수만 할당할 수도 있고, 위의 예시에 나온 것처럼 sizeof(int) * 10과 같이 여러개의 변수를 할당할 수도 있다.
+위의 코드 예시처럼 하면 10개의 integers를 할당하므로 총 40B의 크기를 할당하게 된다.
+arr은 10개의 integer 크기의 연속된 공간을 포인팅하게 되고, 이것을 array라고 부른다.
+
+***
+
+### C: Free memory
+
+앞에서 malloc으로 메모리에 할당을 하였다면, 이제는 메모리에서 free를 해주어야 한다.
+자바나 파이썬 같은 경우 각자의 가상머신에 의해 메모리가 관리되어지는데, C의 경우는 그렇지 않고 프로그래머가 모두 관리해주어야 한다.
+free 하는 방법은 아래와 같다.
+{% highlight base16.monokai.dark %}
+struct rectangle* rect;
+rect = (struct rectangle* )malloc(sizeof(struct rectangle));
+
+int* arr;
+arr = (int* )malloc(sizeof(int) * 10);
+
+free(rect);
+free(arr);
+{% endhighlight %}
+
+만약 malloc을 하고 free를 하지 않는다면 프로그램을 실행하는 동안 메모리 낭비가 발생하게 된다.
+프로그램을 끈다면 자동으로 OS에 반환되게 된다.
+
+***
+
+### C: Pitfalls with Freeing memory
+
+1. Double free
+이미 free한 것을 또 free하는 경우를 말한다.
+{% highlight base16.monokai.dark %}
+free(rect);
+free(rect);
+{% endhighlight %}
+
+2. Invalid memory address
+malloc으로 할당된 곳이 아닌 다른 주소에 있는 것을 free하려고 하는 경우를 말한다.
+{% highlight base16.monokai.dark %}
+free(arr+1);
+{% endhighlight %}
+
+***
+
+### C: Arrays
+
+Array는 메모리상에서 연속된 공간으로, 같은 타입의 데이터 여러개로 구성되어 있다.
+
+{% highlight base16.monokai.dark %}
+int array[10]; //10개의 정수들을 stack 공간에 정적 할당
+int* array2 = (int* )malloc(sizeof(int) * 10); //Array를 이용하는 경우이다
+free(array2);
+{% endhighlight %}
+
+위의 두 가지 할당 방법은 모두 10개의 integers 크기의 array를 만드는 방법이다.
+하지만 차이점이 존재한다.
+
+첫번 째 방법은 정적 할당으로, free를 하지 않아도 되어 memory leak와 같은 문제를 무시할 수 있다. 하지만 메모리의 크기가 하드 코딩되어 있어 나중에 변경할 수 없다는 단점이 있다. 또한 stack 공간에 할당되므로 할당 받을 수 있는 메모리 양에 제한이 크다.
+
+두번 째 방법은 동적 할당으로, 프로그램이 실행되는 동안 메모리 공간을 할당한다. 이 방법으로 할당된 메모리는 free가 실행되기 전까지 공간을 유지하고 있다. 따라서 free를 함으로써 관리를 계속 해주어야 한다는 것이다. 하지만 메모리 크기를 원하는 대로 할당했다가 없앨 수 있어 메모리 공간을 효율적으로 사용할 수 있고, 이미 할당이 된 메모리라 하더라도 크기를 변경할 수 있다.
+
+Array 사용 예시
+{% highlight base16.monokai.dark %}
+int* arr = (int* )malloc(sizeof(int) * 10); //arr=0x1000
+
+for(int i = 0; i<10; i++)
+	arr[i] = i;
+{% endhighlight %}
+Array의 요소에 접근하는 방법은 Array_name[element_index]이다.
+이때, index는 0부터 시작한다.
+![]({{site.baseurl}}/img/array_access.JPG)
+
+***
+
+### C: Strings: array of characters
+
+C언어는 문자열을 characters 타입의 array로 표현한다.
+string을 선언하는 방법은 아래 2가지가 있다.
+1. char* string;
+2. char string[];
+
+{% highlight base16.monokai.dark %}
+char string[] = "Hello world";
+char* str2 = (char* )malloc(sizeof(char) * 13);
+str2 = "Hello CS230!";
+
+printf("%s(%d)\n", string, strlen(string));
+printf("%s(%d)\n", str2, strlen(str2));
+
+printf("sizeof(string) = %d\n", sizeof(string));
+{% endhighlight %}
+
+위의 코드를 실행하면 아래와 같은 결과가 나온다.
+{% highlight base16.monokai.dark %}
+Hello world(11)
+Hello CS230!(12)
+sizeof(string) = 12
+{% endhighlight %}
+
+strlen(string)은 11인데, sizeof(string)은 12인 이유가 무엇일까?
+사실 string에는 숨어있는 부분이 있다.
+C에서 string을 만들면 아래와 같이 생성된다.
+![]({{site.baseurl}}/img/string_in_c.JPG)
+
+C에서 string은 항상 '/0'으로 끝난다.(null-character)
+이 null-character가 없으면 string의 길이를 알 수 없게 된다.
+
+***
+
+### C: Strings operations
+
+* strlen: string의 길이를 얻을 수 있다.(null character제외)
+
+* strcpy: string을 한 위치에서 다른 위치로 복사한다.
+
+* strcmp: string이 같은지 체크한다.
+
+* strcat: 두 개의 string을 연결한다.
+
+* strstr: string내에서 하위 string을 찾는다.
+
+* $ man strxxx command를 이용하면 각각의 man page를 볼 수 있다.

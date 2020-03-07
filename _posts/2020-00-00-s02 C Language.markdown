@@ -621,7 +621,7 @@ C에서 string을 만들면 아래와 같이 생성된다.
 ![]({{site.baseurl}}/img/string_in_c.JPG)
 
 C에서 string은 항상 '/0'으로 끝난다.(null-character)
-이 null-character가 없으면 string의 길이를 알 수 없게 된다.
+이 null-character가 없으면 string의 길이를 알 수 없게 된
 
 ***
 
@@ -637,4 +637,4 @@ C에서 string은 항상 '/0'으로 끝난다.(null-character)
 
 * strstr: string내에서 하위 string을 찾는다.
 
-* $ man strxxx command를 이용하면 각각의 man page를 볼 수 있다.
+* $ man strxxx command를 이용하면 각각의 man page를 볼 수 있다.rrrr

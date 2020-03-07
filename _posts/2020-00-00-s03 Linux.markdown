@@ -5,3 +5,139 @@ date:   2020-01-29 12:50:30 +0300
 image:  05.jpg
 tags:   SysProg
 ---
+
+### What is Linux?
+
+리눅스는 1991년 Linus Torvalds에 의해 처음 개발되었고, 현재 무료로 이용할 수 있다.
+사용자가 원하는 대로 커스터마이징을 할 수 있다는 특징과 무료라는 것 때문에 많은 공기관에서 운영체제로 사용하고 있다.
+
+***
+
+### How to connect to a linux machine?
+
+SSH 클라이언트(PuTTY or XShell)를 이용하여 연결한다.
+
+##### PuTTY : A Free Telnet / SSH Client
+* 가벼운 ssh client
+* 비 친유저성 인터페이스
+
+##### XShell
+* 교육 목적이라면 무료
+* 친유저성 인터페이스
+
+***
+
+### PuTTY connection
+
+![]({{site.baseurl}}/img/putty1.JPG)
+
+이후 로그인 화면이 뜨면 아이디를 적고 비밀번호를 적으면 된다.
+이떄, 비밀번호는 적어도 보이지 않는데, 정상이다.
+
+Welcome to Ubuntu ~~ 와 같은 문구가 뜨면 정상적으로 연결된 것이다.
+
+그러면 아래에 Command Shell이 뜬다.
+이때 Shell이란 사용자와 리눅스 머신 사이의 행 명령 인터페이스, 즉 행에 명령어를 넣어 사용자가 리눅스 머신에게 명령을 실행하도록 하는 인터페이스를 말한다.
+
+***
+
+### Linux Commands
+
+그렇다면 행에 넣을 수 있는 명령어들을 알아보자.
+
+* ls
+디렉토리 내용물들을 나열한다.
+ls -l : 각 내용물들의 자세한 정보들도 같이 나열한다.
+ls -a : 히든 파일들도 모두 드러나게 나열한다.
+ls / : 루트 디렉토리를 나열한다.
+ls ~ : 홈 디렉토리를 나열한다.
+ls /home : /home 이라는 디렉토리를 나열한다.
+ls -al /proc : /proc 디렉토리를 자세하게 나열한다.
+
+나열될 때 각 파일들이 표시되는 방식은 아래와 같다.
+
+permissions / number of links / owner name / owner group / size / last modification time / name
+
+permissions가 표현되는 방식은 아래 사진처럼 적용되어 있다.
+
+![]({{site.baseurl}}/img/permissions.JPG)
+출처: [linuxcommand.org][linuxcommand.org]
+
+[linuxcommand.org]: http://linuxcommand.org/lts0070.php
+
+* cd
+현재 디렉토리 위치를 바꾼다.
+cd.. : 상위 디렉토리로 이동
+cd. : 현재 디렉토리
+cd ~ : 홈 디렉토리로 이동
+cd - : 이전 디렉토리로 이동
+
+* pwd
+현재 디렉토리의 이름을 출력한다.
+
+* mkdir, rmdir
+mkdir [name] : 디렉토리 생성
+rmdir [name] : 비어있는 디렉토리 제거
+
+* cat
+파일들을 연결하고 standard output(표준 출력)에 출력한다. 
+
+파일 속 내용을 따로 실행하는 것 없이 간단하게 쉘에 출력해서 살펴보고 싶을 때 주로 사용한다.
+
+Examples
+cat file1 을 실행하면 file1의 내용물이 출력된다.
+
+cat file1 file2 를 실행하면 file1의 내용물이 출력된 후 file2의 내용물이 출력된다.
+
+cat file1 file2 > new_file을 실행하면 new_file이라는 파일에 file1과 file2의 내용물이 차례로 들어가게 된다.
+
+따라서 cat new_file을 실행하면 file1의 내용물이 출력된 후 file2의 내용물이 출력되게 된다.
+
+이때, > 는 overwrite 기능이고, >> 를 쓰면 원래 기존에 있던 내용물을 건드리지 않고 그 뒤에 추가된다.
+
+* mv
+파일이나 디렉토리를 다른 위치로 이동시키거나 이름을 바꿀 때 이용한다.
+
+이 명령어를 사용하는 형식은 아래와 같다.
+mv source_file_or_dir destination_file_or_dir
+
+Examples
+mv file1 file4를 하면 file1의 이름이 file4로 변경된다.
+mv file2 ./directory1을 하면 file2를 directory1으로 이동시킨다.
+
+* cp
+하나 또는 여러 개의 파일들을 특정 장소에 복사한다.
+
+이 명령어를 사용하는 형식은 아래와 같다.
+cp source_file_or_dir destination_file_or_dir
+
+Examples
+cp file1 file4를 하면 file1의 내용이 file4라는 파일이 새로 생성되면서 안에 복사된다.
+
+cp file1 directory1/을 하면 file1이 directory1에 복사된다.
+
+cp file1 directory1/file5를 하면 directory1에서 file5라는 파일이 새로 생성되면서 복사된다.
+
+* rm
+파일이나 디렉토리를 제거한다.
+
+이 명령어를 사용하는 형식은 아래와 같다.
+rm file_to_delete
+
+rm -i : 진짜 정말로 지울건지 한번 물어본다.
+rm -f : 존재하지 않는 파일은 물어보지 않고 바로 무시한다.
+rm -r : 디렉토리를 지우는데, 그 내용물 또한 재귀적으로 지운다.
+rm -rf : 디렉토리가 비어있지 않더라도 지워버린다.
+
+* grep
+파일 안에서 grep 명령어로 준 패턴이 있는 문장을 출력한다.
+
+Example
+grep "cat" file1을 하면 file1 안에서 cat이라는 것이 있는 문장 전체를 출력한다.
+
+grep "content" file1 file2을 하면 아래와 같이 두 파일이 분리되어 content가 포함된 문장을 출력한다.
+
+file1 : content of ......
+file2 : content is ......
+
+* chmod
